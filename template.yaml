@@ -1,0 +1,184 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  sam-app
+
+  Sample SAM Template for sam-app
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 3
+
+    # You can add LoggingConfig parameters such as the Logformat, Log Group, and SystemLogLevel or ApplicationLogLevel. Learn more here https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-function.html#sam-function-loggingconfig.
+    LoggingConfig:
+      LogFormat: JSON
+Resources:
+  HelloWorldFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: hello_world/
+      Handler: app.lambda_handler
+      Runtime: python3.13
+      Architectures:
+        - x86_64
+      Events:
+        HelloWorld:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /hello
+            Method: get
+  FetchAndStoreExternalTweets:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: fetch_and_store_external_tweets/
+      Runtime: python3.12
+      Architectures:
+        - x86_64
+      Handler: app.lambda_handler
+      # This property associates this Lambda function with a scheduled CloudWatch Event. For all available properties, see
+      # https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#schedule
+      # This example runs every hour.
+      Events:
+        CloudWatchEvent:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0 * * * ? *)
+      MemorySize: 128
+      Timeout: 100
+      Environment:
+        Variables:
+          TWITTER_API_KEY: !Ref TWITTER_API_KEY
+          TWITTER_API_SECRET: !Ref TWITTER_API_SECRET
+          TWITTER_ACCESS_TOKEN: !Ref TWITTER_ACCESS_TOKEN
+          TWITTER_ACCESS_TOKEN_SECRET: !Ref TWITTER_ACCESS_TOKEN_SECRET
+          CLAUDE_API_KEY: !Ref CLAUDE_API_KEY
+          SUPABASE_URL: !Ref SUPABASE_URL
+          SUPABASE_KEY: !Ref SUPABASE_KEY
+          TWEET_SEARCH_WINDOW: 36000
+  FetchAndStoreMentions:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: fetch_and_store_mentions/
+      Runtime: python3.12
+      Architectures:
+        - x86_64
+      Handler: app.lambda_handler
+      # This property associates this Lambda function with a scheduled CloudWatch Event. For all available properties, see
+      # https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#schedule
+      # This example runs every hour.
+      Events:
+        CloudWatchEvent:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0 * * * ? *)
+      MemorySize: 128
+      Timeout: 100
+      Environment:
+        Variables:
+          TWITTER_API_KEY: !Ref TWITTER_API_KEY
+          TWITTER_API_SECRET: !Ref TWITTER_API_SECRET
+          TWITTER_ACCESS_TOKEN: !Ref TWITTER_ACCESS_TOKEN
+          TWITTER_ACCESS_TOKEN_SECRET: !Ref TWITTER_ACCESS_TOKEN_SECRET
+          CLAUDE_API_KEY: !Ref CLAUDE_API_KEY
+          SUPABASE_URL: !Ref SUPABASE_URL
+          SUPABASE_KEY: !Ref SUPABASE_KEY
+          TWEET_SEARCH_WINDOW: 36000
+  ReplyToMention:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: reply_to_mention/
+      Runtime: python3.12
+      Architectures:
+        - x86_64
+      Handler: app.lambda_handler
+      # This property associates this Lambda function with a scheduled CloudWatch Event. For all available properties, see
+      # https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#schedule
+      # This example runs every hour.
+      Events:
+        CloudWatchEvent:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0 * * * ? *)
+      MemorySize: 128
+      Timeout: 100
+      Environment:
+        Variables:
+          TWITTER_API_KEY: !Ref TWITTER_API_KEY
+          TWITTER_API_SECRET: !Ref TWITTER_API_SECRET
+          TWITTER_ACCESS_TOKEN: !Ref TWITTER_ACCESS_TOKEN
+          TWITTER_ACCESS_TOKEN_SECRET: !Ref TWITTER_ACCESS_TOKEN_SECRET
+          CLAUDE_API_KEY: !Ref CLAUDE_API_KEY
+          SUPABASE_URL: !Ref SUPABASE_URL
+          SUPABASE_KEY: !Ref SUPABASE_KEY
+          TWEET_SEARCH_WINDOW: 36000
+  RespondToMention:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: respond_to_mention/
+      Runtime: python3.12
+      Architectures:
+        - x86_64
+      Handler: app.lambda_handler
+      # This property associates this Lambda function with a scheduled CloudWatch Event. For all available properties, see
+      # https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#schedule
+      # This example runs every hour.
+      Events:
+        CloudWatchEvent:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0 * * * ? *)
+      MemorySize: 128
+      Timeout: 100
+      Environment:
+        Variables:
+          TWITTER_API_KEY: !Ref TWITTER_API_KEY
+          TWITTER_API_SECRET: !Ref TWITTER_API_SECRET
+          TWITTER_ACCESS_TOKEN: !Ref TWITTER_ACCESS_TOKEN
+          TWITTER_ACCESS_TOKEN_SECRET: !Ref TWITTER_ACCESS_TOKEN_SECRET
+          CLAUDE_API_KEY: !Ref CLAUDE_API_KEY
+          SUPABASE_URL: !Ref SUPABASE_URL
+          SUPABASE_KEY: !Ref SUPABASE_KEY
+          TWEET_SEARCH_WINDOW: 36000
+  SelfTweet:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: self_tweet/
+      Runtime: python3.12
+      Architectures:
+        - x86_64
+      Handler: app.lambda_handler
+      # This property associates this Lambda function with a scheduled CloudWatch Event. For all available properties, see
+      # https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#schedule
+      # This example runs every hour.
+      Events:
+        CloudWatchEvent:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0 * * * ? *)
+      MemorySize: 128
+      Timeout: 100
+      Environment:
+        Variables:
+          TWITTER_API_KEY: !Ref TWITTER_API_KEY
+          TWITTER_API_SECRET: !Ref TWITTER_API_SECRET
+          TWITTER_ACCESS_TOKEN: !Ref TWITTER_ACCESS_TOKEN
+          TWITTER_ACCESS_TOKEN_SECRET: !Ref TWITTER_ACCESS_TOKEN_SECRET
+          CLAUDE_API_KEY: !Ref CLAUDE_API_KEY
+          SUPABASE_URL: !Ref SUPABASE_URL
+          SUPABASE_KEY: !Ref SUPABASE_KEY
+          TWEET_SEARCH_WINDOW: 36000
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  HelloWorldApi:
+    Description: API Gateway endpoint URL for Prod stage for Hello World function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
+  HelloWorldFunction:
+    Description: Hello World Lambda Function ARN
+    Value: !GetAtt HelloWorldFunction.Arn
+  HelloWorldFunctionIamRole:
+    Description: Implicit IAM Role created for Hello World function
+    Value: !GetAtt HelloWorldFunctionRole.Arn

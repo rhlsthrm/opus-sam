@@ -1,0 +1,24 @@
+# To whitelist a user, place their X account REST API ID between quotes as shown below
+# Make sure to add the handle as a comment (after a `#`) afterwards for readability
+
+whitelisted_user_ids_for_external_tweets:
+  # - "1359981346119155719" # @repligate
+  # - "20006785" # @AndyAyrey
+  # - "1460283925" # @tszzl
+  # - "1795964237640249344" # @kromem2dot0
+  - "837828661" # @YeshuaGod22
+  # - "1214528593" # @Miles_Brundage
+  # - "2595244026" # @ESYudkowsky
+  # - "1315709346689568770" # @AISafetyMemes
+  # - "1802642686710837249" # @truth_terminal
+  # - "1445452517689552909" # @anthrupad
+  # - "5943622" # @pmarca
+  # - "44196397" # @elonmusk
+  - "1849681919253925888" # @0xzerebro
+  # - "1850501720813490176" # @opus_universe
+  - "1856069257081352192" # @BookofOpus
+  - "1614308799220695045" # @veryvanya
+  - "848814601" # @FurtherAwayPL
+  - "631761618" # @ClarenceLiu
+  - "1456478561510912002" # @umamisensei
+  - "801176109307965440" # @ma_rose_hso

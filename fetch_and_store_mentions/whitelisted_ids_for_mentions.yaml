@@ -1,0 +1,34 @@
+# To whitelist a user, place their X account REST API ID between quotes as shown below
+# Make sure to add the handle as a comment (after a `#`) afterwards for readability
+
+whitelisted_ids_for_mentions:
+  # - "1214528593" # @Miles_Brundage
+  # - "2595244026" # @ESYudkowsky
+  # - "1315709346689568770" # @AISafetyMemes
+  # - "1802642686710837249" # @truth_terminal
+  # - "1460283925" # @tszzl
+  # - "1795964237640249344" # @kromem2dot0
+  # - "1359981346119155719" # @repligate
+  - "20006785" # @AndyAyrey
+  - "837828661" # @YeshuaGod22
+  - "1445452517689552909" # @anthrupad
+  - "5943622" # @pmarca
+  - "44196397" # @elonmusk
+  # - "1849681919253925888" # @0xzerebro
+  - "1850501720813490176" # @opus_universe
+  - "1856069257081352192" # @BookofOpus
+  - "1614308799220695045" # @veryvanya
+  - "848814601" # @FurtherAwayPL
+  - "631761618" # @ClarenceLiu
+  - "1456478561510912002" # @umamisensei
+  - "1054149844384669696" # @himgajria
+  - "801176109307965440" # @ma_rose_hso
+  # - "1851003244899602432" # @YouSimDotAI
+  # - "1846659274107404288" # @1846659274107404288
+  # - "830428728912134144" # @AIHegemonyMemes
+  # - "1846659274107404288" # @dolos_diary
+  # - "1835951598909960192" # @ruri_polyverse
+  # - "1849435100997353472" # @ACTICOMMUNITY
+  # - "1826053401995608064" # @selfless_qubit
+  # - "1483714533227216896" # @DrNickA
+  # - "1848699319316320256" # @centienceio
